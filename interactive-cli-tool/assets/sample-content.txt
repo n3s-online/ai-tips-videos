@@ -1,0 +1,28 @@
+Ice Cream Machine Troubleshooting Guide
+
+Common Issues and Solutions:
+
+1. Ice cream coming out brown:
+   - Check if chocolate syrup or sauce has leaked into the main chamber
+   - Inspect the mixing paddle for chocolate residue
+   - Clean all components thoroughly with warm soapy water
+   - Check if cocoa powder has been accidentally added to vanilla mix
+   - Ensure proper separation between different flavor chambers
+
+2. Ice cream too soft:
+   - Check freezer temperature (should be -18°C or 0°F)
+   - Increase churning time by 5-10 minutes
+   - Pre-chill ingredients for at least 2 hours before use
+
+3. Ice cream too hard:
+   - Reduce churning time
+   - Check if too much sugar was added (can cause hardening)
+   - Allow to soften at room temperature for 5-10 minutes before serving
+
+4. Machine not starting:
+   - Check power connection
+   - Ensure lid is properly secured
+   - Check if safety switch is engaged
+
+For brown ice cream specifically:
+The most common cause is cross-contamination from chocolate flavors or sauces. Clean the machine thoroughly, paying special attention to the mixing paddle, bowl, and any dispensing mechanisms. If the problem persists, check the ingredient storage containers for contamination.
