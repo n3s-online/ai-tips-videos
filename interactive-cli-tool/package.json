@@ -16,7 +16,8 @@
   "dependencies": {
     "@ai-sdk/anthropic": "^2.0.17",
     "ai": "^5.0.44",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "enquirer": "^2.4.1"
   },
   "devDependencies": {
     "@types/node": "^24.5.0",

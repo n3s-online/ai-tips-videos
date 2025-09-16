@@ -3,25 +3,38 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { generateText } from "ai";
 import * as fs from "fs";
 import * as path from "path";
+import enquirer from "enquirer";
 
 // Load environment variables from .env file
 config();
 
-// Hardcoded constants
-const PDF_FILEPATH = "assets/Taylor_C602_Instruction_Manual.pdf";
-const QUESTION = "the icecream is coming out brown, what do I do?";
-
 async function processPdfWithClaude() {
   try {
-    // Check if PDF file exists
-    const pdfPath = path.resolve(PDF_FILEPATH);
-    if (!fs.existsSync(pdfPath)) {
-      throw new Error(`PDF file not found at: ${pdfPath}`);
-    }
-
     // Check for Anthropic API key
     if (!process.env.ANTHROPIC_API_KEY) {
       throw new Error("ANTHROPIC_API_KEY environment variable is required");
+    }
+
+    // Prompt for PDF file path
+    const { pdfFilePath } = (await enquirer.prompt({
+      type: "input",
+      name: "pdfFilePath",
+      message: "Enter the path to your PDF file:",
+      initial: "assets/Taylor_C602_Instruction_Manual.pdf",
+    })) as { pdfFilePath: string };
+
+    // Prompt for question
+    const { question } = (await enquirer.prompt({
+      type: "input",
+      name: "question",
+      message: "What question would you like to ask about the PDF?",
+      initial: "the icecream is coming out brown, what do I do?",
+    })) as { question: string };
+
+    // Check if PDF file exists
+    const pdfPath = path.resolve(pdfFilePath);
+    if (!fs.existsSync(pdfPath)) {
+      throw new Error(`PDF file not found at: ${pdfPath}`);
     }
 
     // Read PDF file as buffer for direct processing by Claude
@@ -41,7 +54,7 @@ async function processPdfWithClaude() {
           content: [
             {
               type: "text",
-              text: `Please analyze the attached PDF document and answer this question: "${QUESTION}"`,
+              text: `Please analyze the attached PDF document and answer this question: "${question}"`,
             },
             {
               type: "file",
@@ -51,7 +64,6 @@ async function processPdfWithClaude() {
           ],
         },
       ],
-      maxTokens: 1000,
       maxRetries: 0, // Disable retries to see actual error
     });
 
